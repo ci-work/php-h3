@@ -16,7 +16,7 @@ trait GridTraversalTrait
     
     $dec = hexdec($h3Index);
     
-    $h3SetDef = FFI::type("uint64_t[]");
+    $h3SetDef = FFI::type("*uint64_t");
     $h3Set = $ffi->new($h3SetDef);
     $ffi->kRing($dec, $k, FFI::addr($h3Set));
     var_dump($h3Set);
