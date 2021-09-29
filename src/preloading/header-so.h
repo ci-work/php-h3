@@ -21,7 +21,7 @@ typedef struct {
     double lat;  
     /// longitude in radians
     double lon;  
-} GeoCoord;
+} LatLng;
 
 // IndexInspection
 
@@ -30,12 +30,16 @@ int h3IsValid(H3Index h);
 
 // Indexing
 
-H3Index geoToH3(const GeoCoord *g, int res);
-void h3ToGeo(H3Index h3, GeoCoord *g);
+H3Index geoToH3(const LatLng *g, int res);
+void h3ToGeo(H3Index h3, LatLng *g);
 
 // HierarchicalGrid
 
 H3Index h3ToParent(H3Index h, int parentRes);
+
+// Traversal
+
+void kRing(H3Index origin, int k, H3Index* out);
 
 // Misc
 

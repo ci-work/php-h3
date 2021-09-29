@@ -37,7 +37,7 @@ final class H3
 
     public function geoToH3(float $lat, float $lon, int $res): string
     {
-        $location = self::$ffi->new('GeoCoord');
+        $location = self::$ffi->new('LatLng');
         $location->lat = deg2rad($lat);
         $location->lon = deg2rad($lon);
 
@@ -49,7 +49,7 @@ final class H3
     public function h3ToGeo(string $h3Index): object
     {
         $dec = hexdec($h3Index);
-        $geoCord = self::$ffi->new('GeoCoord');
+        $geoCord = self::$ffi->new('LatLng');
         self::$ffi->h3ToGeo($dec, FFI::addr($geoCord));
 
         return (object) [
@@ -77,5 +77,17 @@ final class H3
     public function radsToDegs(float $radians): float
     {
         return self::$ffi->radsToDegs($radians);
+    }
+    
+    // Traversal
+    public function kRing(string $h3Index, int $k): object
+    {
+      $dec = hexdec($h3Index);
+      
+      $h3SetDef = FFI::type("uint64_t[7]");
+      $h3Set = self::$ffi->new($h3SetDef);
+      self::$ffi->kRing($dec, $k, FFI::addr($h3Set));
+      
+      return (array)$h3Set;
     }
 }

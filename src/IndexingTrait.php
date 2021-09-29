@@ -13,12 +13,12 @@ trait IndexingTrait
         }
 
         $ffi = FFI::cdef(
-            self::H3IndexTypeDef.self::GeoCoordTypeDef.
-            'H3Index geoToH3(const GeoCoord *g, int res);',
+            self::H3IndexTypeDef.self::LatLngTypeDef.
+            'H3Index geoToH3(const LatLng *g, int res);',
             $this->lib
         );
 
-        $location = $ffi->new('GeoCoord');
+        $location = $ffi->new('LatLng');
         $location->lat = deg2rad($lat);
         $location->lon = deg2rad($lon);
 
@@ -34,13 +34,13 @@ trait IndexingTrait
         }
 
         $ffi = FFI::cdef(
-            self::H3IndexTypeDef.self::GeoCoordTypeDef.
-            'void h3ToGeo(H3Index h3, GeoCoord *g);',
+            self::H3IndexTypeDef.self::LatLngTypeDef.
+            'void h3ToGeo(H3Index h3, LatLng *g);',
             $this->lib
         );
 
         $dec = hexdec($h3Index);
-        $geoCord = $ffi->new('GeoCoord');
+        $geoCord = $ffi->new('LatLng');
         $ffi->h3ToGeo($dec, FFI::addr($geoCord));
 
         return (object) [
