@@ -2,6 +2,8 @@
 
 namespace MichaelLindahl\H3;
 
+use FFI;
+
 trait GridTraversalTrait
 {
   public function kRing(string $h3Index, int $k): array
