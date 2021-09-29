@@ -18,7 +18,7 @@ trait GridTraversalTrait
     
     $h3SetDef = FFI::type("uint64_t[7]");
     $h3Set = self::$ffi->new($h3SetDef);
-    self::$ffi->kRing($dec, $k, FFI::addr($h3Set));
+    $ffi->kRing($dec, $k, FFI::addr($h3Set));
     
     return (array)$h3Set;
   }
