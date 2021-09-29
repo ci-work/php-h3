@@ -8,9 +8,6 @@ trait HierarchicalGridTrait
 {
     public function h3ToParent(string $H3Index, int $parentRes): string
     {
-        if (php_sapi_name() !== 'cli') {
-            return (new \H3())->h3ToParent($H3Index, $parentRes);
-        }
 
         $ffi = FFI::cdef(self::H3IndexTypeDef.'H3Index h3ToParent(H3Index h, int parentRes);', $this->lib);
 
