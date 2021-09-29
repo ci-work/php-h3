@@ -80,7 +80,7 @@ final class H3
     }
     
     // Traversal
-    public function kRing(string $h3Index, int $k): object
+    public function kRing(string $h3Index, int $k): array
     {
       $dec = hexdec($h3Index);
       
