@@ -1,5 +1,5 @@
 {
-    "name": "ci-work/php-h3",
+    "name": "michaellindahl/php-h3",
     "description": "A PHP library for Uber's H3 C Library using FFI.",
     "type": "library",
     "license": "MIT",
