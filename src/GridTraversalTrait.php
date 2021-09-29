@@ -10,7 +10,7 @@ trait GridTraversalTrait
   {
     $ffi = FFI::cdef(
       self::H3IndexTypeDef.self::LatLngTypeDef.
-      'void kRing(H3Index origin, int k, H3Index* out);',
+      'void kRing(H3Index origin, int k, H3Index *out);',
       $this->lib
     );
     
