@@ -15,8 +15,13 @@ trait GridTraversalTrait
     );
     
     $dec = hexdec($h3Index);
-    
-    $h3SetDef = FFI::type("uint64_t[7]");
+    # calculate the size of the return
+    $size = 1;
+    for($i=1; $i<=$k; $i++) {
+      $temp = $i*6;
+      $size += $temp;
+    }
+    $h3SetDef = FFI::type("uint64_t[".$size."]");
     $h3Set = $ffi->new($h3SetDef, false, true);
     $ffi->kRing($dec, $k, $h3Set);
     
